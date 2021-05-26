@@ -169,7 +169,7 @@
 						
 						for (var i = 0; i < salariesCount; i++) {							
 							if (i == 0){
-								firstSalary = basicSalary * 0.045
+								firstSalary = basicSalary * 0.045 * 12
 								total = firstSalary + total	
 								document.getElementById("pay-"+i).innerHTML = firstSalary;
 							}
@@ -202,7 +202,7 @@
 			</script>
 
 					<button id="saveBill" type="submit" class="btn btn-success">Save</button>
-					<a href="<%=request.getContextPath()%>/Bhyt-new" class="btn btn-success">Thêm BHYT mới</a>	
+					<a id="addnewBH" href="<%=request.getContextPath()%>/Bhyt-new" class="btn btn-success">Thêm BHYT mới</a>	
 					
 						
 				</form>

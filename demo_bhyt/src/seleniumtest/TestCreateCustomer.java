@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -56,15 +57,16 @@ public class TestCreateCustomer {
 			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
 			webDriver = new ChromeDriver();
 			try {
+				customerDAO = new CustomerDAO();
 				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
 				Thread.sleep(1000);
 				
 				WebElement name = webDriver.findElement(By.id("name"));
-				name.sendKeys("Trần Đình Nam");
+				name.sendKeys("Trần Đình Nam2");
 				Thread.sleep(1000);
 				
 				WebElement idCardNum = webDriver.findElement(By.id("idCardNum"));
-				idCardNum.sendKeys("01385903248");
+				idCardNum.sendKeys("011385903383");
 				Thread.sleep(1000);
 				
 				WebElement dob = webDriver.findElement(By.id("dob"));
@@ -89,9 +91,12 @@ public class TestCreateCustomer {
 				String expected = "Thêm khách hàng mới thành công!";
 				assertEquals(expected, success);
 				
+				
+				Customer existedCustomer = customerDAO.selectCustomerbyidcard("011385903383");
+				Assertions.assertNotNull(existedCustomer);
+				
 				//rollback
-				customerDAO = new CustomerDAO();
-				Customer existedCustomer = customerDAO.selectCustomerbyidcard("01385903248");
+				
 				Connection connection = getConnection();
 				String sql = "delete from tblCustomer where id = ?";
 				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
@@ -348,6 +353,7 @@ public class TestCreateCustomer {
 			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
 			webDriver = new ChromeDriver();
 			try {
+				customerDAO = new CustomerDAO();
 				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
 				Thread.sleep(1000);
 				
@@ -381,9 +387,11 @@ public class TestCreateCustomer {
 				String expected = "Thêm khách hàng mới thất bại!";
 				assertEquals(expected, failure);
 				
+				Customer existedCustomer = customerDAO.selectCustomerbyidcard("03875428323");
+				Assertions.assertNull(existedCustomer);
+				
 				//rollback
 				customerDAO = new CustomerDAO();
-				Customer existedCustomer = customerDAO.selectCustomerbyidcard("03875428323");
 				Connection connection = getConnection();
 				String sql = "delete from tblCustomer where id = ?";
 				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
@@ -403,6 +411,7 @@ public class TestCreateCustomer {
 			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
 			webDriver = new ChromeDriver();
 			try {
+				customerDAO = new CustomerDAO();
 				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
 				Thread.sleep(1000);
 				
@@ -436,9 +445,11 @@ public class TestCreateCustomer {
 				String expected = "Thêm khách hàng mới thất bại!";
 				assertEquals(expected, failure);
 				
+				Customer existedCustomer = customerDAO.selectCustomerbyidcard("@*hd28323");
+				Assertions.assertNull(existedCustomer);
+				
 				//rollback
 				customerDAO = new CustomerDAO();
-				Customer existedCustomer = customerDAO.selectCustomerbyidcard("@*hd28323");
 				Connection connection = getConnection();
 				String sql = "delete from tblCustomer where id = ?";
 				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
@@ -458,6 +469,7 @@ public class TestCreateCustomer {
 			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
 			webDriver = new ChromeDriver();
 			try {
+				customerDAO = new CustomerDAO();
 				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
 				Thread.sleep(1000);
 				
@@ -491,9 +503,11 @@ public class TestCreateCustomer {
 				String expected = "Thêm khách hàng mới thất bại!";
 				assertEquals(expected, failure);
 				
+				Customer existedCustomer = customerDAO.selectCustomerbyidcard("123");
+				Assertions.assertNull(existedCustomer);
+				
 				//rollback
 				customerDAO = new CustomerDAO();
-				Customer existedCustomer = customerDAO.selectCustomerbyidcard("123");
 				Connection connection = getConnection();
 				String sql = "delete from tblCustomer where id = ?";
 				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
@@ -513,6 +527,7 @@ public class TestCreateCustomer {
 			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
 			webDriver = new ChromeDriver();
 			try {
+				customerDAO = new CustomerDAO();
 				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
 				Thread.sleep(1000);
 				
@@ -546,9 +561,11 @@ public class TestCreateCustomer {
 				String expected = "Thêm khách hàng mới thất bại!";
 				assertEquals(expected, failure);
 				
-				//rollback
-				customerDAO = new CustomerDAO();
 				Customer existedCustomer = customerDAO.selectCustomerbyidcard("18594839523");
+				Assertions.assertNull(existedCustomer);
+				
+				//rollback
+				
 				Connection connection = getConnection();
 				String sql = "delete from tblCustomer where id = ?";
 				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
@@ -568,6 +585,7 @@ public class TestCreateCustomer {
 			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
 			webDriver = new ChromeDriver();
 			try {
+				customerDAO = new CustomerDAO();
 				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
 				Thread.sleep(1000);
 				
@@ -601,9 +619,11 @@ public class TestCreateCustomer {
 				String expected = "Thêm khách hàng mới thất bại!";
 				assertEquals(expected, failure);
 				
+				Customer existedCustomer = customerDAO.selectCustomerbyidcard("012913248");
+				Assertions.assertNull(existedCustomer);
+				
 				//rollback
-				customerDAO = new CustomerDAO();
-				Customer existedCustomer = customerDAO.selectCustomerbyidcard("2342423423");
+				
 				Connection connection = getConnection();
 				String sql = "delete from tblCustomer where id = ?";
 				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
@@ -623,6 +643,7 @@ public class TestCreateCustomer {
 			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
 			webDriver = new ChromeDriver();
 			try {
+				customerDAO = new CustomerDAO();
 				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
 				Thread.sleep(1000);
 				
@@ -656,9 +677,12 @@ public class TestCreateCustomer {
 				String expected = "Thêm khách hàng mới thất bại!";
 				assertEquals(expected, failure);
 				
-				//rollback
-				customerDAO = new CustomerDAO();
 				Customer existedCustomer = customerDAO.selectCustomerbyidcard("858357435734287528");
+				Assertions.assertNull(existedCustomer);
+				
+				//rollback
+				
+
 				Connection connection = getConnection();
 				String sql = "delete from tblCustomer where id = ?";
 				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
@@ -678,6 +702,7 @@ public class TestCreateCustomer {
 			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
 			webDriver = new ChromeDriver();
 			try {
+				customerDAO = new CustomerDAO();
 				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
 				Thread.sleep(1000);
 				
@@ -711,9 +736,11 @@ public class TestCreateCustomer {
 				String expected = "Thêm khách hàng mới thất bại!";
 				assertEquals(expected, failure);
 				
-				//rollback
-				customerDAO = new CustomerDAO();
 				Customer existedCustomer = customerDAO.selectCustomerbyidcard("85837528");
+				Assertions.assertNull(existedCustomer);
+				
+				//rollback
+				
 				Connection connection = getConnection();
 				String sql = "delete from tblCustomer where id = ?";
 				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
@@ -733,6 +760,7 @@ public class TestCreateCustomer {
 			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
 			webDriver = new ChromeDriver();
 			try {
+				customerDAO = new CustomerDAO();
 				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
 				Thread.sleep(1000);
 				
@@ -766,9 +794,12 @@ public class TestCreateCustomer {
 				String expected = "Thêm khách hàng mới thất bại!";
 				assertEquals(expected, failure);
 				
+				Customer existedCustomer = customerDAO.selectCustomerbyidcard("012913248");
+				Assertions.assertNull(existedCustomer);
+				
 				//rollback
-				customerDAO = new CustomerDAO();
-				Customer existedCustomer = customerDAO.selectCustomerbyidcard("085835743528");
+				
+				
 				Connection connection = getConnection();
 				String sql = "delete from tblCustomer where id = ?";
 				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
@@ -788,6 +819,7 @@ public class TestCreateCustomer {
 			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
 			webDriver = new ChromeDriver();
 			try {
+				customerDAO = new CustomerDAO();
 				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
 				Thread.sleep(1000);
 				
@@ -813,7 +845,7 @@ public class TestCreateCustomer {
 				
 				WebElement save = webDriver.findElement(By.id("saveCus"));
 				save.click();
-
+				
 				WebDriverWait wait = new WebDriverWait(webDriver, 2);
 				WebElement messageElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("message")));
 				Thread.sleep(1000);
@@ -821,9 +853,10 @@ public class TestCreateCustomer {
 				String expected = "Thêm khách hàng mới thất bại!";
 				assertEquals(expected, failure);
 				
-				//rollback
-				customerDAO = new CustomerDAO();
 				Customer existedCustomer = customerDAO.selectCustomerbyidcard("05734287528");
+				Assertions.assertNull(existedCustomer);
+				//rollback
+				
 				Connection connection = getConnection();
 				String sql = "delete from tblCustomer where id = ?";
 				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
@@ -843,6 +876,7 @@ public class TestCreateCustomer {
 			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
 			webDriver = new ChromeDriver();
 			try {
+				customerDAO = new CustomerDAO();
 				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
 				Thread.sleep(1000);
 				
@@ -876,6 +910,64 @@ public class TestCreateCustomer {
 				String expected = "Thêm khách hàng mới thất bại!";
 				assertEquals(expected, failure);
 				
+				Customer existedCustomer = customerDAO.selectCustomerbyidcard("357435734908");
+				Assertions.assertNull(existedCustomer);
+				
+				//rollback
+				
+				
+				Connection connection = getConnection();
+				String sql = "delete from tblCustomer where id = ?";
+				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
+				p.setInt(1, existedCustomer.getId());
+				p.executeUpdate();
+				webDriver.close();
+				
+			} catch (Exception e) {
+				System.out.println("Test failed!" + e.getMessage());
+				webDriver.close();
+			} 
+		}
+	
+	@Test
+	public void createCustomer17() {
+		WebDriver webDriver;
+			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
+			webDriver = new ChromeDriver();
+			try {
+				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
+				Thread.sleep(1000);
+				
+				WebElement name = webDriver.findElement(By.id("name"));
+				name.sendKeys("Phạm Minh Hải");
+				Thread.sleep(1000);
+				
+				WebElement idCardNum = webDriver.findElement(By.id("idCardNum"));
+				idCardNum.sendKeys("112");
+				Thread.sleep(1000);
+				
+				WebElement dob = webDriver.findElement(By.id("dob"));
+				dob.sendKeys("06/06/1999");
+				Thread.sleep(1000);
+				
+				WebElement address = webDriver.findElement(By.id("address"));
+				address.sendKeys("Hà Nội");
+				Thread.sleep(1000);
+				
+				WebElement telephone = webDriver.findElement(By.id("telephone"));
+				telephone.sendKeys("0908493240894");
+				Thread.sleep(1000);
+				
+				WebElement save = webDriver.findElement(By.id("saveCus"));
+				save.click();
+
+				WebDriverWait wait = new WebDriverWait(webDriver, 2);
+				WebElement messageElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("message")));
+				Thread.sleep(1000);
+				String failure = messageElement.getText();
+				String expected = "Thêm khách hàng mới thất bại!";
+				assertEquals(expected, failure);
+				
 				//rollback
 				customerDAO = new CustomerDAO();
 				Customer existedCustomer = customerDAO.selectCustomerbyidcard("357435734908");
@@ -891,5 +983,124 @@ public class TestCreateCustomer {
 				webDriver.close();
 			} 
 		}
+	
+	@Test
+	public void createCustomer18() {
+		WebDriver webDriver;
+			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
+			webDriver = new ChromeDriver();
+			try {
+				customerDAO = new CustomerDAO();
+				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
+				Thread.sleep(1000);
+				
+				WebElement name = webDriver.findElement(By.id("name"));
+				name.sendKeys("Phạm Minh Hải");
+				Thread.sleep(1000);
+				
+				WebElement idCardNum = webDriver.findElement(By.id("idCardNum"));
+				idCardNum.sendKeys("11234235345345345342");
+				Thread.sleep(1000);
+				
+				WebElement dob = webDriver.findElement(By.id("dob"));
+				dob.sendKeys("06/06/1999");
+				Thread.sleep(1000);
+				
+				WebElement address = webDriver.findElement(By.id("address"));
+				address.sendKeys("Hà Nội");
+				Thread.sleep(1000);
+				
+				WebElement telephone = webDriver.findElement(By.id("telephone"));
+				telephone.sendKeys("0908493240894");
+				Thread.sleep(1000);
+				
+				WebElement save = webDriver.findElement(By.id("saveCus"));
+				save.click();
+
+				WebDriverWait wait = new WebDriverWait(webDriver, 2);
+				WebElement messageElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("message")));
+				Thread.sleep(1000);
+				String failure = messageElement.getText();
+				String expected = "Thêm khách hàng mới thất bại!";
+				assertEquals(expected, failure);
+				
+				Customer existedCustomer = customerDAO.selectCustomerbyidcard("11234235345345345342");
+				Assertions.assertNull(existedCustomer);
+				
+				//rollback
+				
+				Connection connection = getConnection();
+				String sql = "delete from tblCustomer where id = ?";
+				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
+				p.setInt(1, existedCustomer.getId());
+				p.executeUpdate();
+				webDriver.close();
+				
+			} catch (Exception e) {
+				System.out.println("Test failed!" + e.getMessage());
+				webDriver.close();
+			} 
+		}
+	
+	@Test
+	public void createCustomer19() {
+		WebDriver webDriver;
+			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
+			webDriver = new ChromeDriver();
+			try {
+				customerDAO = new CustomerDAO();
+				webDriver.get("http://localhost:8080/demo_bhyt/Customer-new");
+				Thread.sleep(1000);
+				
+				WebElement name = webDriver.findElement(By.id("name"));
+				name.sendKeys("Phạm Minh Hải");
+				Thread.sleep(1000);
+				
+				WebElement idCardNum = webDriver.findElement(By.id("idCardNum"));
+				idCardNum.sendKeys("04849327423");
+				Thread.sleep(1000);
+				
+				WebElement dob = webDriver.findElement(By.id("dob"));
+				dob.sendKeys("06/06/1999");
+				Thread.sleep(1000);
+				
+				WebElement address = webDriver.findElement(By.id("address"));
+				address.sendKeys("Hà Nội");
+				Thread.sleep(1000);
+				
+				WebElement telephone = webDriver.findElement(By.id("telephone"));
+				telephone.sendKeys("0908493240894");
+				Thread.sleep(1000);
+				
+				WebElement save = webDriver.findElement(By.id("saveCus"));
+				save.click();
+
+				WebDriverWait wait = new WebDriverWait(webDriver, 2);
+				WebElement messageElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("message")));
+				Thread.sleep(1000);
+				String failure = messageElement.getText();
+				String expected = "Thêm khách hàng mới thất bại!";
+				assertEquals(expected, failure);
+				
+				Customer existedCustomer = customerDAO.selectCustomerbyidcard("04849327423");
+				Assertions.assertNull(existedCustomer);
+				
+				//rollback
+				
+
+				Connection connection = getConnection();
+				String sql = "delete from tblCustomer where id = ?";
+				PreparedStatement p = (PreparedStatement) connection.prepareStatement(sql);
+				p.setInt(1, existedCustomer.getId());
+				p.executeUpdate();
+				webDriver.close();
+				
+			} catch (Exception e) {
+				System.out.println("Test failed!" + e.getMessage());
+				webDriver.close();
+			} 
+		}
+	
+
 
 }

@@ -55,8 +55,8 @@
 						<th>ID</th>
 						<th>Loại đối tượng</th>
 						<th>Ngày trả tiền</th>
-						<th>Người trả</th>
-						<th>Công ty</th>
+						<th>ID Người trả</th>
+						<th>ID Công ty</th>
 					</tr>
 				</thead>
 				<tbody>

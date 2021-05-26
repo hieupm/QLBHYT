@@ -260,4 +260,80 @@ public class TestCalculatePayment {
 			} 
 		}
 	
+	@Test
+	public void payment5() {
+		WebDriver webDriver;
+			System.setProperty("webdriver.chrome.driver", "C:/Eden/SQA/chromedriver/chromedriver.exe");
+			webDriver = new ChromeDriver();
+			try {
+				webDriver.get("http://localhost:8080/demo_bhyt/Bhyt-new");
+				Thread.sleep(1000);
+				
+				Select idCardNum = new Select(webDriver.findElement(By.id("idCardNum")));
+				idCardNum.selectByValue("012913248");
+				Thread.sleep(1000);
+				
+				WebElement startDate = webDriver.findElement(By.id("startDate"));
+				startDate.sendKeys("06/24/2021");
+				Thread.sleep(1000);
+				
+				WebElement endDate = webDriver.findElement(By.id("endDate"));
+				endDate.sendKeys("06/24/2022");
+				Thread.sleep(1000);
+				
+				Select hospitalName = new Select(webDriver.findElement(By.id("hospitalName")));
+				hospitalName.selectByValue("BV 103");
+				Thread.sleep(1000);
+				
+				WebElement add = webDriver.findElement(By.id("addBH"));
+				add.click();
+				
+				WebDriverWait wait = new WebDriverWait(webDriver, 5);
+				WebElement messageElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("bhyt")));
+				String success = messageElement.getText();
+				String expected = "Thêm bảo hiểm vào danh sách hóa đơn thành công!";
+				assertEquals(expected, success);
+				Thread.sleep(1000);
+//				Select type = new Select(wait.until(ExpectedConditions.presenceOfElementLocated(By.id("type"))));
+//				type.selectByValue("Nhóm do người lao động và người sử dụng lao động đóng");
+//				Thread.sleep(1000);
+				
+				
+				WebElement buttonAddBh = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("addnewBH")));
+				buttonAddBh.click();
+				
+				idCardNum.selectByValue("03875428323");
+				Thread.sleep(1000);
+				
+				startDate.sendKeys("06/24/2021");
+				Thread.sleep(1000);
+				
+				endDate.sendKeys("06/24/2022");
+				Thread.sleep(1000);
+				
+				hospitalName.selectByValue("BV 103");
+				Thread.sleep(1000);
+				
+				Select type = new Select(wait.until(ExpectedConditions.presenceOfElementLocated(By.id("type"))));
+				type.selectByValue("Nhóm tham gia Bảo hiểm y tế theo hộ gia đình");
+				
+				WebElement payment = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("pay-0")));
+				String money = payment.getText();
+				Thread.sleep(1000);
+				assertEquals("2484000", money);
+				WebElement payment2 = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("pay-1")));
+				String money2 = payment.getText();
+				assertEquals("1738800", money2);
+				WebElement delete = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("deleteBh?id=0")));
+				delete.click();
+				WebElement delete2 = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("deleteBh?id=1")));
+				delete2.click();
+				Thread.sleep(1000);
+				webDriver.close();
+			} catch (Exception e) {
+				System.out.println("Test failed!" + e.getMessage());
+				webDriver.close();
+			} 
+		}
+	
 }

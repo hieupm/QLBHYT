@@ -58,8 +58,8 @@ public class TestBhytDAO {
 	        java.sql.Date startDate = java.sql.Date.valueOf("2020-10-10");
 	        java.sql.Date endDate = java.sql.Date.valueOf("2021-10-10");
 //	        java.sql.Date paidDate = java.sql.Date.valueOf("2020-12-12");
-	        float supportLevel = (float) 1.4;
-	        Customer cus = customerDAO.selectCustomerbyidcard("012329829");
+	        float supportLevel = (float) 0.4;
+	        Customer cus = customerDAO.selectCustomerbyidcard("012913248");
 	        Hospital hos = hospitalDAO.selectHospitalById(1);
 	        BHYT bhyt = new BHYT(startDate, endDate, supportLevel, 7500000, cus, hos, billId);
 	        
@@ -92,8 +92,8 @@ public class TestBhytDAO {
 				int countId1 = bhytDAO.countBhyt(); 
 		        java.sql.Date startDate = java.sql.Date.valueOf("2020-10-10");
 		        java.sql.Date endDate = java.sql.Date.valueOf("2021-10-10");
-		        float supportLevel = (float) 1.4;
-		        Customer cus = customerDAO.selectCustomerbyidcard("012329829");
+		        float supportLevel = (float) 0.4;
+		        Customer cus = customerDAO.selectCustomerbyidcard("012913248");
 		        Hospital hos = hospitalDAO.selectHospitalById(1);
 		        BHYT bhyt = new BHYT(null, endDate, supportLevel, 7500000, cus, hos, billId);		        
 		        bhytDAO.insertBhyt(bhyt);	  
@@ -125,7 +125,7 @@ public class TestBhytDAO {
 				int countId1 = bhytDAO.countBhyt(); 
 				int billId = 1;
 		        java.sql.Date startDate = java.sql.Date.valueOf("2020-10-10");
-		        float supportLevel = (float) 1.4;
+		        float supportLevel = (float) 0.4;
 		        Customer cus = customerDAO.selectCustomerbyidcard("012329829");
 		        Hospital hos = hospitalDAO.selectHospitalById(1);
 		        BHYT bhyt = new BHYT(startDate, null, supportLevel, 7500000, cus, hos, billId);		        
@@ -193,7 +193,7 @@ public class TestBhytDAO {
 				int billId = 1;
 		        java.sql.Date startDate = java.sql.Date.valueOf("2020-10-10");
 		        java.sql.Date endDate = java.sql.Date.valueOf("2027-10-10");
-		        float supportLevel = (float) 1.4;
+		        float supportLevel = (float) 0.4;
 		        Customer cus = customerDAO.selectCustomerbyidcard("012329829");
 		        Hospital hos = hospitalDAO.selectHospitalById(1);
 		        BHYT bhyt = new BHYT(startDate, endDate, supportLevel, -7500000, cus, hos, billId);		        

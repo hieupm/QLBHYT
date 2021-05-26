@@ -47,7 +47,7 @@ public class TestBillDAO {
 		try {
 			billDAO = new BillDAO();
 			customerDAO = new CustomerDAO();
-			int customerId = 10, associationId = 1;
+			int customerId = 3, associationId = 1;
 			int countId1 = billDAO.countBill();
 			java.sql.Date paidDate = java.sql.Date.valueOf("2021-05-22");
 	        Bill bill = new Bill("Nhóm do cơ quan bảo hiểm xã hội đóng",paidDate, customerId, associationId);
@@ -74,7 +74,7 @@ public class TestBillDAO {
 		try {
 			billDAO = new BillDAO();
 			customerDAO = new CustomerDAO();
-			int customerId = 10;
+			int customerId = 3;
 			int countId1 = billDAO.countBill();
 			
 			java.sql.Date paidDate = java.sql.Date.valueOf("2021-05-22");
@@ -103,7 +103,7 @@ public class TestBillDAO {
 			billDAO = new BillDAO();
 			customerDAO = new CustomerDAO();
 
-			int customerId = 10;
+			int customerId = 3;
 			int associationId = 1;
 			int countId1 = billDAO.countBill();
 			
@@ -133,7 +133,7 @@ public class TestBillDAO {
 			billDAO = new BillDAO();
 			customerDAO = new CustomerDAO();
 
-			int customerId = 10;
+			int customerId = 3;
 			int associationId = 1;
 			int countId1 = billDAO.countBill();
 			
@@ -164,7 +164,7 @@ public class TestBillDAO {
 			billDAO = new BillDAO();
 			customerDAO = new CustomerDAO();
 
-			int customerId = 10;
+			int customerId = 3;
 			int associationId = 1;
 			int countId1 = billDAO.countBill();
 			
